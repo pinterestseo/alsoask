@@ -1,16 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { 
-    domains: ['images.unsplash.com'],
-    unoptimized: true 
+  output: 'standalone',
+  images: {
+    unoptimized: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
+  // Tambahkan konfigurasi webpack
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
+    return config;
   },
-  typescript: {
-    ignoreBuildErrors: true
-  },
-  swcMinify: false
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

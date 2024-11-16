@@ -15,9 +15,9 @@ export async function measurePageSpeed() {
     lcp: navigation.loadEventEnd - navigation.loadEventStart,
     
     // Time to Interactive (TTI)
-    tti: navigation.domInteractive - navigation.navigationStart,
+    tti: navigation.domInteractive,
     
     // Total Page Load Time
-    loadTime: navigation.loadEventEnd - navigation.navigationStart
+    loadTime: navigation.loadEventEnd
   };
 }
