@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // Ubah ke 'export' untuk static site generation
+  // Hapus output: 'export' karena kita akan gunakan SSR
   images: {
     unoptimized: true,
   },
