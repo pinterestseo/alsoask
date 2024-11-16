@@ -1,11 +1,13 @@
 "use client";
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { articles } from '@/data/articles';
 import Link from 'next/link';
 import { SnippetBox } from '@/components/snippet-box';
 
-export default function SearchPage() {
+// Komponen untuk hasil pencarian
+function SearchResults() {
   const searchParams = useSearchParams();
   const query = searchParams.get('q')?.toLowerCase() || '';
 
@@ -38,5 +40,18 @@ export default function SearchPage() {
         <p className="text-muted-foreground">No results found for your search.</p>
       )}
     </div>
+  );
+}
+
+// Komponen utama dengan Suspense
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-5xl mx-auto px-4 py-12">
+        <h1 className="text-3xl font-bold mb-8">Searching...</h1>
+      </div>
+    }>
+      <SearchResults />
+    </Suspense>
   );
 }
